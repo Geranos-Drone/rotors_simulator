@@ -79,7 +79,7 @@
       <plugin filename="librotors_gazebo_multirotor_base_plugin.so" name="multirotor_base_plugin">
         <robotNamespace>${robot_namespace}</robotNamespace>
         <linkName>${robot_namespace}/base_link</linkName>
-        <rotorVelocitySlowdownSim>${rotor_velocity_slowdown_sim}</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>${rotor_velocity_slowdown_thrust}</rotorVelocitySlowdownSim>
       </plugin>
     </gazebo>
   </xacro:macro>
@@ -97,7 +97,7 @@
     </joint>
     <link name="${robot_namespace}/rotor_${motor_number}">
       <inertial>
-        <mass value="${mass_rotor}" /> <!-- [kg] -->
+        <mass value="${mass_rotor_thrust}" /> <!-- [kg] -->
         <xacro:insert_block name="inertia" />
       </inertial>
       <visual>
@@ -108,7 +108,7 @@
               scale="1 1 1" />
           </xacro:if>
           <xacro:unless value="${use_own_mesh}">
-            <mesh filename="package://rotors_description/meshes/propeller_${direction}.dae"
+            <mesh filename="package://rotors_description/meshes/geranos_prop_${direction}.dae"
               scale="${radius_rotor} ${radius_rotor} ${radius_rotor}" /> <!-- The propeller meshes have a radius of 1m -->
             <!-- <box size="${2*radius_rotor} 0.01 0.005"/> -->
           </xacro:unless>
@@ -136,7 +136,7 @@
         <rotorDragCoefficient>${rotor_drag_coefficient}</rotorDragCoefficient>
         <rollingMomentCoefficient>${rolling_moment_coefficient}</rollingMomentCoefficient>
         <motorSpeedPubTopic>motor_speed/${motor_number}</motorSpeedPubTopic>
-        <rotorVelocitySlowdownSim>${rotor_velocity_slowdown_sim}</rotorVelocitySlowdownSim>
+        <rotorVelocitySlowdownSim>${rotor_velocity_slowdown_thrust}</rotorVelocitySlowdownSim>
       </plugin>
     </gazebo>
     <gazebo reference="${robot_namespace}/rotor_${motor_number}">
