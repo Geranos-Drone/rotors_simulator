@@ -8,7 +8,7 @@
   <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
   <xacro:property name="use_mesh_file" value="true" />
   <xacro:property name="mesh_file" value="package://rotors_description/meshes/geranos_simple.dae" />
-  <xacro:property name="mass" value="4.7" /> <!-- [kg] --> <!-- still to be determined -->
+  <xacro:property name="mass" value="5.0" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="body_width" value="0.820" /> <!-- [m] -->
   <xacro:property name="half_body_width_long" value="0.44" /> <!-- [m] -->
   <xacro:property name="half_body_width_short" value="0.41" /> <!-- [m] -->
@@ -33,7 +33,7 @@
 
   <!-- Property Blocks --> 
   <xacro:property name="body_inertia"> <!-- still to be determined -->
-    <inertia ixx="1.5" ixy="0.0" ixz="0.0" iyy="1.5" iyz="0.0" izz="1.5" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
+    <inertia ixx="0.06" ixy="0.0" ixz="0.0" iyy="0.10" iyz="0.0" izz="0.15" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
   </xacro:property>
 
   <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
@@ -229,6 +229,7 @@
     <origin xyz="0 -0.365  ${rotor_offset_direction}" rpy="-0.698132 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
+
 
 
 </robot>
