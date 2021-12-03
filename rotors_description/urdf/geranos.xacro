@@ -8,7 +8,7 @@
   <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
   <xacro:property name="use_mesh_file" value="true" />
   <xacro:property name="mesh_file" value="package://rotors_description/meshes/geranos_simple.dae" />
-  <xacro:property name="mass" value="4.7" /> <!-- [kg] --> <!-- still to be determined -->
+  <xacro:property name="mass" value="5.0" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="body_width" value="0.820" /> <!-- [m] -->
   <xacro:property name="half_body_width_long" value="0.44" /> <!-- [m] -->
   <xacro:property name="half_body_width_short" value="0.41" /> <!-- [m] -->
@@ -33,7 +33,7 @@
 
   <!-- Property Blocks --> 
   <xacro:property name="body_inertia"> <!-- still to be determined -->
-    <inertia ixx="1.5" ixy="0.0" ixz="0.0" iyy="1.5" iyz="0.0" izz="1.5" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
+    <inertia ixx="0.06" ixy="0.0" ixz="0.0" iyy="0.10" iyz="0.0" izz="0.15" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
   </xacro:property>
 
   <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
@@ -157,7 +157,7 @@
     time_constant_up="${time_constant_up}"
     time_constant_down="${time_constant_down}"
     max_rot_velocity="${max_rot_velocity}"
-    motor_number="4"
+    motor_number="6"
     rotor_drag_coefficient="${rotor_drag_coefficient}"
     rolling_moment_coefficient="${rolling_moment_coefficient}"
     color="Blue"
@@ -178,7 +178,7 @@
     time_constant_up="${time_constant_up}"
     time_constant_down="${time_constant_down}"
     max_rot_velocity="${max_rot_velocity}"
-    motor_number="5"
+    motor_number="4"
     rotor_drag_coefficient="${rotor_drag_coefficient}"
     rolling_moment_coefficient="${rolling_moment_coefficient}"
     color="Blue"
@@ -199,7 +199,7 @@
     time_constant_up="${time_constant_up}"
     time_constant_down="${time_constant_down}"
     max_rot_velocity="${max_rot_velocity}"
-    motor_number="6"
+    motor_number="5"
     rotor_drag_coefficient="${rotor_drag_coefficient}"
     rolling_moment_coefficient="${rolling_moment_coefficient}"
     color="Blue"
@@ -229,6 +229,95 @@
     <origin xyz="0 -0.365  ${rotor_offset_direction}" rpy="-0.698132 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
+
+
+   <gazebo>
+    <plugin name="mavlink_interface" filename="librotors_gazebo_mavlink_interface.so">
+      <robotNamespace>${namespace}</robotNamespace>
+      <imu_rate>102</imu_rate>
+      <imuSubTopic>/imu</imuSubTopic>
+      <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_udp_port>14560</mavlink_udp_port>
+      <motorSpeedCommandPubTopic>/gazebo/command/motor_speed</motorSpeedCommandPubTopic>
+
+      <control_channels>
+
+        <channel name="rotor0">
+          <input_index>0</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor1">
+          <input_index>1</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor2">
+          <input_index>2</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor3">
+          <input_index>3</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor4">
+          <input_index>4</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor5">
+          <input_index>5</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+         <channel name="rotor6">
+          <input_index>6</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+        <channel name="rotor7">
+          <input_index>7</input_index>
+          <input_offset>0</input_offset>
+          <input_scaling>${max_rot_velocity}</input_scaling>
+          <zero_position_disarmed>0</zero_position_disarmed>
+          <zero_position_armed>100</zero_position_armed>
+          <joint_control_type>velocity</joint_control_type>
+        </channel>
+
+      </control_channels>
+    </plugin>
+  </gazebo>
+
 </robot>
 
 <!-- add channel from omav.xacro-->
