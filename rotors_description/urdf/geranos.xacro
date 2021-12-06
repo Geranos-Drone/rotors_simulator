@@ -10,8 +10,10 @@
   <xacro:property name="mesh_file" value="package://rotors_description/meshes/geranos_simple.dae" />
   <xacro:property name="mass" value="5.0" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="body_width" value="0.820" /> <!-- [m] -->
-  <xacro:property name="half_body_width_long" value="0.44" /> <!-- [m] -->
-  <xacro:property name="half_body_width_short" value="0.41" /> <!-- [m] -->
+  <xacro:property name="big_rotor_x" value="0.44017" /> <!-- [m] -->
+  <xacro:property name="big_rotor_y" value="0.4098" /> <!-- [m] -->
+  <xacro:property name="small_rotor_x" value="0.46506" /> <!-- [m] -->
+  <xacro:property name="small_rotor_y" value="0.36506" /> <!-- [m] -->
   <xacro:property name="half_body_width" value="0.3" /> <!-- [m] -->
   <xacro:property name="side_length_one" value="0.2" /> <!-- [m] -->
   <xacro:property name="side_length_two" value="0.3" /> <!-- [m] -->
@@ -78,7 +80,7 @@
     color="Red"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="${half_body_width_long} ${half_body_width_short} ${rotor_offset_thrust}" rpy="0 0 0" />
+    <origin xyz="${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
   </xacro:vertical_rotor>
 
@@ -100,7 +102,7 @@
     color="Red"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${half_body_width_long} -${half_body_width_short} ${rotor_offset_thrust}" rpy="0 0 0" />
+    <origin xyz="-${big_rotor_x} -${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
   </xacro:vertical_rotor>
 
@@ -121,7 +123,7 @@
     color="Red"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${half_body_width_long} ${half_body_width_short} ${rotor_offset_thrust}" rpy="0 0 0" />
+    <origin xyz="-${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
   </xacro:vertical_rotor>
 
@@ -142,7 +144,7 @@
     color="Red"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="${half_body_width_long} -${half_body_width_short} ${rotor_offset_thrust}" rpy="0 0 0" />
+    <origin xyz="${big_rotor_x} -${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
   </xacro:vertical_rotor>
 
@@ -163,7 +165,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0.465  0 ${rotor_offset_direction}" rpy="0 -0.698132 0" />
+    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -0.698132 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
 
@@ -184,7 +186,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-0.452 0 0.28" rpy="0 0.698132 0" />
+    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 0.698132 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
 
@@ -205,7 +207,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 0.365  ${rotor_offset_direction}" rpy="0.698132 0 0" />
+    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="0.698132 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
 
@@ -226,7 +228,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 -0.365  ${rotor_offset_direction}" rpy="-0.698132 0 0" />
+    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-0.698132 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:vertical_rotor>
 
