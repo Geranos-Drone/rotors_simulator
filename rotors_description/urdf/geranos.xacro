@@ -7,11 +7,11 @@
   <xacro:property name="rotor_velocity_slowdown_direction" value="4" />
   <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
   <xacro:property name="use_mesh_file" value="true" />
-  <xacro:property name="mesh_file" value="package://rotors_description/meshes/geranos_simple.dae" />
+  <xacro:property name="mesh_file" value="package://rotors_description/meshes/geranos_finalprototyp1.dae" /> 
   <xacro:property name="mass" value="5.0" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="body_width" value="0.820" /> <!-- [m] -->
 
-   <xacro:property name="big_rotor_x" value="0.44017" /> <!-- [m] -->
+   <xacro:property name="big_rotor_x" value="0.440" /> <!-- [m] -->
   <xacro:property name="big_rotor_y" value="0.4098" /> <!-- [m] -->
   <xacro:property name="small_rotor_x" value="0.46506" /> <!-- [m] -->
   <xacro:property name="small_rotor_y" value="0.36506" /> <!-- [m] -->
@@ -24,7 +24,7 @@
   <xacro:property name="mass_rotor_direction" value="0.005" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="rotor_offset_thrust" value="0.13" /> <!-- [m] --> <!-- still to be determined -->
   <xacro:property name="rotor_offset_direction" value="0.27" /> <!-- [m] --> <!-- still to be determined -->
-  <xacro:property name="radius_rotor_thrust_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
+  <xacro:property name="radius_rotor_thrust_simulation" value="0.2286" /> <!-- [m] --> <!-- radius or durchmesser -->
   <xacro:property name="radius_rotor_direction_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
   <xacro:property name="radius_rotor_thrust_meter" value="0.2286" /> <!-- [m] --> <!-- radius -->
   <xacro:property name="radius_rotor_direction_meter" value="0.06477" /> <!-- [m] --> <!-- radius -->
@@ -67,10 +67,10 @@
   </xacro:multirotor_base_macro>
 
   <!-- Instantiate rotors -->
-  <xacro:vertical_rotor
+  <xacro:thrust_rotor
     robot_namespace="${namespace}"
     suffix="front_right"
-    direction="thrust"
+    direction="propeller_ccw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -87,12 +87,12 @@
     mesh="">
     <origin xyz="${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
-  </xacro:vertical_rotor>
+  </xacro:thrust_rotor>
 
-  <xacro:vertical_rotor
+  <xacro:thrust_rotor
     robot_namespace="${namespace}"
     suffix="back_left"
-    direction="thrust"
+    direction="propeller_ccw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -109,11 +109,11 @@
     mesh="">
     <origin xyz="-${big_rotor_x} -${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
-  </xacro:vertical_rotor>
+  </xacro:thrust_rotor>
 
-  <xacro:vertical_rotor robot_namespace="${namespace}"
+  <xacro:thrust_rotor robot_namespace="${namespace}"
     suffix="back_right"
-    direction="thrust"
+    direction="propeller_cw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -130,11 +130,11 @@
     mesh="">
     <origin xyz="-${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
-  </xacro:vertical_rotor>
+  </xacro:thrust_rotor>
 
-  <xacro:vertical_rotor robot_namespace="${namespace}"
+  <xacro:thrust_rotor robot_namespace="${namespace}"
     suffix="front_left"
-    direction="thrust"
+    direction="propeller_cw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -151,11 +151,11 @@
     mesh="">
     <origin xyz="${big_rotor_x} -${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
     <xacro:insert_block name="rotor_inertia_thrust" />
-  </xacro:vertical_rotor>
+  </xacro:thrust_rotor>
 
-<xacro:vertical_rotor robot_namespace="${namespace}"
+<xacro:direction_rotor robot_namespace="${namespace}"
     suffix="direction_front"
-    direction="direction"
+    direction="direction_cw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -170,13 +170,13 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -0.698132 0" />
+    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:vertical_rotor>
+  </xacro:direction_rotor>
 
-  <xacro:vertical_rotor robot_namespace="${namespace}"
+  <xacro:direction_rotor robot_namespace="${namespace}"
     suffix="direciton_back"
-    direction="direction"
+    direction="direction_cw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -191,13 +191,13 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 0.698132 0" />
+    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:vertical_rotor>
+  </xacro:direction_rotor>
 
-  <xacro:vertical_rotor robot_namespace="${namespace}"
+  <xacro:direction_rotor robot_namespace="${namespace}"
     suffix="direction_right"
-    direction="direction"
+    direction="direction_ccw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -212,13 +212,13 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="0.698132 0 0" />
+    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:vertical_rotor>
+  </xacro:direction_rotor>
 
-  <xacro:vertical_rotor robot_namespace="${namespace}"
+  <xacro:direction_rotor robot_namespace="${namespace}"
     suffix="direction_left"
-    direction="direction"
+    direction="direction_ccw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -233,8 +233,8 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-0.698132 0 0" />
+    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:vertical_rotor>
+  </xacro:direction_rotor>
 
 </robot>
