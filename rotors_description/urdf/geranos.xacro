@@ -11,10 +11,11 @@
   <xacro:property name="mass" value="5.0" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="body_width" value="0.820" /> <!-- [m] -->
 
-   <xacro:property name="big_rotor_x" value="0.44017" /> <!-- [m] -->
+  <xacro:property name="big_rotor_x" value="0.44017" /> <!-- [m] -->
   <xacro:property name="big_rotor_y" value="0.4098" /> <!-- [m] -->
-  <xacro:property name="small_rotor_x" value="0.4481" /> <!-- [m] -->
-  <xacro:property name="small_rotor_y" value="0.3481" /> <!-- [m] -->
+  <xacro:property name="small_rotor_x" value="0.463" /> <!-- [m] -->
+  <xacro:property name="small_rotor_y" value="0.363" /> <!-- [m] -->
+  <xacro:property name="small_rotor_x_off" value="0.4547" /> <!-- [m] -->
 
   <xacro:property name="half_body_width" value="0.3" /> <!-- [m] -->
   <xacro:property name="side_length_one" value="0.2" /> <!-- [m] -->
@@ -23,8 +24,9 @@
   <xacro:property name="mass_rotor_thrust" value="0.05" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="mass_rotor_direction" value="0.005" /> <!-- [kg] --> <!-- still to be determined -->
   <xacro:property name="rotor_offset_thrust" value="0.13" /> <!-- [m] --> <!-- still to be determined -->
-  <xacro:property name="rotor_offset_direction" value="0.27" /> <!-- [m] --> <!-- still to be determined -->
-  <xacro:property name="radius_rotor_thrust_simulation" value="0.2286" /> <!-- [m] --> <!-- radius or durchmesser -->
+  <xacro:property name="rotor_offset_direction" value="0.267" /> <!-- [m] --> <!-- still to be determined -->
+  <xacro:property name="rotor_offset_direction_off" value="0.274" /> <!-- [m] --> <!-- still to be determined -->
+  <xacro:property name="radius_rotor_thrust_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
   <xacro:property name="radius_rotor_direction_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
   <xacro:property name="radius_rotor_thrust_meter" value="0.2286" /> <!-- [m] --> <!-- radius -->
   <xacro:property name="radius_rotor_direction_meter" value="0.06477" /> <!-- [m] --> <!-- radius -->
@@ -82,7 +84,7 @@
     motor_number="2"
     rotor_drag_coefficient="${rotor_drag_coefficient}"
     rolling_moment_coefficient="${rolling_moment_coefficient}"
-    color="Red"
+    color="Yellow"
     use_own_mesh="false"
     mesh="">
     <origin xyz="${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
@@ -153,9 +155,9 @@
     <xacro:insert_block name="rotor_inertia_thrust" />
   </xacro:thrust_rotor>
 
-<xacro:direction_rotor robot_namespace="${namespace}"
+<xacro:direction_f_rotor robot_namespace="${namespace}"
     suffix="direction_front"
-    direction="ccw"
+    direction="cw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -172,9 +174,9 @@
     mesh="">
     <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:direction_rotor>
+  </xacro:direction_f_rotor>
 
-  <xacro:direction_rotor robot_namespace="${namespace}"
+  <xacro:direction_b_rotor robot_namespace="${namespace}"
     suffix="direciton_back"
     direction="cw"
     motor_constant="${motor_constant}"
@@ -191,11 +193,11 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 0.837758 0" />
+    <origin xyz="-${small_rotor_x_off} 0 ${rotor_offset_direction_off}" rpy="0 0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:direction_rotor>
+  </xacro:direction_b_rotor>
 
-  <xacro:direction_rotor robot_namespace="${namespace}"
+  <xacro:direction_r_rotor robot_namespace="${namespace}"
     suffix="direction_right"
     direction="ccw"
     motor_constant="${motor_constant}"
@@ -214,11 +216,11 @@
     mesh="">
     <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:direction_rotor>
+  </xacro:direction_r_rotor>
 
-  <xacro:direction_rotor robot_namespace="${namespace}"
+  <xacro:direction_l_rotor robot_namespace="${namespace}"
     suffix="direction_left"
-    direction="cw"
+    direction="ccw"
     motor_constant="${motor_constant}"
     moment_constant="${moment_constant}"
     parent="${namespace}/base_link"
@@ -235,6 +237,6 @@
     mesh="">
     <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
-  </xacro:direction_rotor>
+  </xacro:direction_l_rotor>
 
 </robot>
