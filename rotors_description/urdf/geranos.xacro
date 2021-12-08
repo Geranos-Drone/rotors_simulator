@@ -84,7 +84,7 @@
     motor_number="2"
     rotor_drag_coefficient="${rotor_drag_coefficient}"
     rolling_moment_coefficient="${rolling_moment_coefficient}"
-    color="Yellow"
+    color="Red"
     use_own_mesh="false"
     mesh="">
     <origin xyz="${big_rotor_x} ${big_rotor_y} ${rotor_offset_thrust}" rpy="0 0 0" />
