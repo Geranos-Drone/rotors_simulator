@@ -27,7 +27,7 @@
   <xacro:property name="rotor_offset_direction" value="0.267" /> <!-- [m] --> <!-- still to be determined -->
   <xacro:property name="rotor_offset_direction_off" value="0.274" /> <!-- [m] --> <!-- still to be determined -->
   <xacro:property name="radius_rotor_thrust_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
-  <xacro:property name="radius_rotor_direction_simulation" value="1" /> <!-- [m] --> <!-- radius or durchmesser -->
+  <xacro:property name="radius_rotor_direction_simulation" value="0.283333" /> <!-- [m] --> <!-- radius or durchmesser -->
   <xacro:property name="radius_rotor_thrust_meter" value="0.2286" /> <!-- [m] --> <!-- radius -->
   <xacro:property name="radius_rotor_direction_meter" value="0.06477" /> <!-- [m] --> <!-- radius -->
   
