@@ -31,8 +31,10 @@
   <xacro:property name="radius_rotor_thrust_meter" value="0.2286" /> <!-- [m] --> <!-- radius -->
   <xacro:property name="radius_rotor_direction_meter" value="0.06477" /> <!-- [m] --> <!-- radius -->
   
-  <xacro:property name="motor_constant" value="8.54858e-06" /> <!-- [kg.m/s^2] -->  
-  <xacro:property name="moment_constant" value="0.016" /> <!-- [m] --> 
+  <xacro:property name="motor_constant_thrust" value="8.58307e-05" /> <!-- [kg.m/s^2] -->
+  <xacro:property name="motor_constant_direction" value="1.21542e-06" /> <!-- [kg.m/s^2] -->   
+  <xacro:property name="moment_constant_thrust" value="0.0214167" /> <!-- [m] --> 
+  <xacro:property name="moment_constant_direction" value="0.011378057" /> <!-- [m] --> 
   <xacro:property name="time_constant_up" value="0.0125" /> <!-- [s] --> 
   <xacro:property name="time_constant_down" value="0.025" /> <!-- [s] --> 
   <xacro:property name="max_rot_velocity_thrust" value="2000" /> <!-- [rad/s] --> 
@@ -73,8 +75,8 @@
     robot_namespace="${namespace}"
     suffix="front_right"
     direction="ccw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_thrust}"
+    moment_constant="${moment_constant_thrust}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_thrust}"
     radius_rotor="${radius_rotor_thrust_simulation}"
@@ -95,8 +97,8 @@
     robot_namespace="${namespace}"
     suffix="back_left"
     direction="ccw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_thrust}"
+    moment_constant="${moment_constant_thrust}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_thrust}"
     radius_rotor="${radius_rotor_thrust_simulation}"
@@ -116,8 +118,8 @@
   <xacro:thrust_rotor robot_namespace="${namespace}"
     suffix="back_right"
     direction="cw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_thrust}"
+    moment_constant="${moment_constant_thrust}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_thrust}"
     radius_rotor="${radius_rotor_thrust_simulation}"
@@ -137,8 +139,8 @@
   <xacro:thrust_rotor robot_namespace="${namespace}"
     suffix="front_left"
     direction="cw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_thrust}"
+    moment_constant="${moment_constant_thrust}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_thrust}"
     radius_rotor="${radius_rotor_thrust_simulation}"
@@ -158,8 +160,8 @@
 <xacro:direction_f_rotor robot_namespace="${namespace}"
     suffix="direction_front"
     direction="cw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_direction}"
+    moment_constant="${moment_constant_direction}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_direction}"
     radius_rotor="${radius_rotor_direction_simulation}"
@@ -179,8 +181,8 @@
   <xacro:direction_b_rotor robot_namespace="${namespace}"
     suffix="direciton_back"
     direction="cw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_direction}"
+    moment_constant="${moment_constant_direction}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_direction}"
     radius_rotor="${radius_rotor_direction_simulation}"
@@ -200,8 +202,8 @@
   <xacro:direction_r_rotor robot_namespace="${namespace}"
     suffix="direction_right"
     direction="ccw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_direction}"
+    moment_constant="${moment_constant_direction}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_direction}"
     radius_rotor="${radius_rotor_direction_simulation}"
@@ -221,8 +223,8 @@
   <xacro:direction_l_rotor robot_namespace="${namespace}"
     suffix="direction_left"
     direction="ccw"
-    motor_constant="${motor_constant}"
-    moment_constant="${moment_constant}"
+    motor_constant="${motor_constant_direction}"
+    moment_constant="${moment_constant_direction}"
     parent="${namespace}/base_link"
     mass_rotor="${mass_rotor_direction}"
     radius_rotor="${radius_rotor_direction_simulation}"
