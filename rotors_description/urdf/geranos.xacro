@@ -13,9 +13,8 @@
 
   <xacro:property name="big_rotor_x" value="0.44017" /> <!-- [m] -->
   <xacro:property name="big_rotor_y" value="0.4098" /> <!-- [m] -->
-  <xacro:property name="small_rotor_x" value="0.463" /> <!-- [m] -->
-  <xacro:property name="small_rotor_y" value="0.363" /> <!-- [m] -->
-  <xacro:property name="small_rotor_x_off" value="0.4547" /> <!-- [m] -->
+  <xacro:property name="small_rotor_x" value="0.4481" /> <!-- [m] -->
+  <xacro:property name="small_rotor_y" value="0.34809" /> <!-- [m] -->
 
   <xacro:property name="half_body_width" value="0.3" /> <!-- [m] -->
   <xacro:property name="side_length_one" value="0.2" /> <!-- [m] -->
@@ -24,16 +23,11 @@
   <xacro:property name="mass_rotor_thrust" value="0.05" /> <!-- [kg] --> 
   <xacro:property name="mass_rotor_direction" value="0.005" /> <!-- [kg] --> 
   <xacro:property name="rotor_offset_thrust" value="0.13" /> <!-- [m] -->
-  <xacro:property name="rotor_offset_direction" value="0.267" /> <!-- [m] --> 
-  <xacro:property name="rotor_offset_direction_off" value="0.274" /> <!-- [m] --> 
+  <xacro:property name="rotor_offset_direction" value="0.26005" /> <!-- [m] --> 
   <xacro:property name="radius_rotor_thrust_simulation" value="1" /> <!-- [m] --> <!-- ratio -->
   <xacro:property name="radius_rotor_direction_simulation" value="0.283333" /> <!-- [m] --> <!-- ratio -->
   <xacro:property name="radius_rotor_thrust_meter" value="0.2286" /> <!-- [m] --> <!-- radius -->
   <xacro:property name="radius_rotor_direction_meter" value="0.06477" /> <!-- [m] --> <!-- radius -->
-  <xacro:property name="angle" value="${48/180*pi}" /> <!-- [rad] --> <!--  -->  
-
-  <xacro:property name="sin_angle" value="0.5" /> <!-- [m] --> <!--  -->
-  <xacro:property name="cos_angle" value="0.5" /> <!-- [m] --> <!--  -->
   
   <xacro:property name="motor_constant_thrust" value="8.58307e-05" /> <!-- [kg.m/s^2] -->  
   <xacro:property name="motor_constant_direction" value="1.21542e-06" /> <!-- [kg.m/s^2] -->  <!--1.21542e-06-->
@@ -178,7 +172,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -${angle} 0" />
+    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_f_rotor>
 
@@ -199,7 +193,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${small_rotor_x_off} 0 ${rotor_offset_direction_off}" rpy="0 ${angle} 0" />
+    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 0.837758 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_b_rotor>
 
@@ -220,7 +214,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="${angle} 0 0" />
+    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_r_rotor>
 
@@ -241,7 +235,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-${angle} 0 0" />
+    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-0.837758 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_l_rotor>
 
