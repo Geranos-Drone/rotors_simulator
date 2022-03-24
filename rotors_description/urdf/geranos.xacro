@@ -174,7 +174,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 1.5708 0" />
+    <origin xyz="${small_rotor_x}  0 ${rotor_offset_direction}" rpy="0 -1.5708 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_f_rotor>
 
@@ -195,7 +195,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 -1.5708 0" />
+    <origin xyz="-${small_rotor_x} 0 ${rotor_offset_direction}" rpy="0 1.5708 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_b_rotor>
 
@@ -216,7 +216,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="-1.5708 0 0" />
+    <origin xyz="0 ${small_rotor_y}  ${rotor_offset_direction}" rpy="1.5708 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_r_rotor>
 
@@ -237,7 +237,7 @@
     color="Blue"
     use_own_mesh="false"
     mesh="">
-    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="1.5708 0 0" />
+    <origin xyz="0 -${small_rotor_y}  ${rotor_offset_direction}" rpy="-1.5708 0 0" />
     <xacro:insert_block name="rotor_inertia_direction" />
   </xacro:direction_l_rotor>
 
