@@ -45,7 +45,7 @@
 
   <!-- Property Blocks --> 
   <xacro:property name="body_inertia"> <!-- TODO -->
-    <inertia ixx="0.6664" ixy="-0.0339" ixz="0.0009" iyy="0.4543" iyz="-0.0003" izz="0.2822" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
+    <inertia ixx="0.4559" ixy="0.0161" ixz="-0.0083" iyy="0.4489" iyz="0.0020" izz="0.6497" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
   </xacro:property>
 
     <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
