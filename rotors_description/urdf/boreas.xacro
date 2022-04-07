@@ -8,19 +8,19 @@
   <xacro:property name="rotor_velocity_slowdown_sim" value="10" />
 
   <xacro:property name="use_mesh_file" value="true" />
-  <xacro:property name="mesh_file" value="package://rotors_description/meshes/boreas.dae" /> 
+  <xacro:property name="mesh_file" value="package://rotors_description/meshes/boreas_origin.dae" /> 
   <xacro:property name="mass" value="6.0" /> <!-- [kg] --> 
   <xacro:property name="body_width" value="0.8378145" /> <!-- [m] -->
   <xacro:property name="body_height" value="0.510" /> <!-- [m] --> 
 
 
-  <xacro:property name="auxiliary_x" value="0.452" /> <!-- [m] -->
-  <xacro:property name="auxiliary_y" value="0.452" /> <!-- [m] -->
+  <xacro:property name="auxiliary_x" value="0.455" /> <!-- [m] -->
+  <xacro:property name="auxiliary_y" value="0.455" /> <!-- [m] -->
   <xacro:property name="thrust_x" value="0.41890725" /> <!-- [m] -->
   <xacro:property name="thrust_y" value="0.41890725" /> <!-- [m] -->
   <xacro:property name="rotation" value="3.14" /> <!-- 180 degrees -->
-  <xacro:property name="z_offset" value="0.024" /> <!-- [m] -->
-  <xacro:property name="z_offset_direction" value="-0.0285" /> <!-- [m] -->
+  <xacro:property name="z_offset" value="0.0525" /> <!-- [m] -->
+  <xacro:property name="z_offset_direction" value="0.0" /> <!-- [m] -->
 
   <xacro:property name="com_x" value="0.0" />
   <xacro:property name="com_y" value="0.0" />
