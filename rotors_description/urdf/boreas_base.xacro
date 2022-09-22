@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot name="geranos" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="$(arg mav_name)" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find rotors_description)/urdf/component_snippets.xacro" />
   <!-- Instantiate boreas "mechanics" -->
   <xacro:include filename="$(find rotors_description)/urdf/boreas.xacro" />
@@ -11,9 +11,75 @@
   <!-- Mount an ADIS16448 IMU. -->
   <xacro:default_imu namespace="${namespace}" parent_link="${namespace}/base_link" />
 
+ <!-- Manual ground truth odometry -->
+<!--   <xacro:odometry_plugin_macro
+    namespace="${namespace}"
+    odometry_sensor_suffix=""
+    parent_link="${namespace}/base_link"
+    pose_topic="pose"
+    pose_with_covariance_topic="pose_with_covariance"
+    position_topic="position"
+    transform_topic="transform"
+    odometry_topic="odometry"
+    parent_frame_id="world"
+    child_frame_id="${namespace}/base_link"
+    mass_odometry_sensor="0.00001"
+    measurement_divisor="1"
+    measurement_delay="0"
+    unknown_delay="0.0"
+    noise_normal_position="0 0 0"
+    noise_normal_quaternion="0 0 0"
+    noise_normal_linear_velocity="0 0 0"
+    noise_normal_angular_velocity="0 0 0"
+    noise_uniform_position="0 0 0"
+    noise_uniform_quaternion="0 0 0"
+    noise_uniform_linear_velocity="0 0 0"
+    noise_uniform_angular_velocity="0 0 0"
+    enable_odometry_map="false"
+    odometry_map=""
+    image_scale="">
+    <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </xacro:odometry_plugin_macro> -->
+  
+
+ <!-- odometry_sensor_rovio -> measurement_divisor has to be <= 3, but was 16 -->
+<!--   <xacro:odometry_plugin_macro
+  namespace="${namespace}"
+  odometry_sensor_suffix=""
+  parent_link="${namespace}/base_link"
+  pose_topic="pose"                                          
+  pose_with_covariance_topic="pose_with_covariance"
+  position_topic="position"
+  transform_topic="transform"
+  odometry_topic="odometry"
+  parent_frame_id="world"
+  child_frame_id="${namespace}/base_link"
+  mass_odometry_sensor="0.00001"
+  measurement_divisor="1"
+  measurement_delay="0.002"
+  unknown_delay="0.0"
+  noise_normal_position="0.0075 0.01 0.003"
+  noise_normal_quaternion="0.0075 0.01 0.003"
+  noise_normal_linear_velocity="0.03 0.03 0.03"
+  noise_normal_angular_velocity="0.0075 0.01 0.003"
+  noise_uniform_position="0.001 0.001 0.001"
+  noise_uniform_quaternion="0.001 0.001 0.001"
+  noise_uniform_linear_velocity="0.001 0.001 0.001"
+  noise_uniform_angular_velocity="0.001 0.001 0.001"
+  enable_odometry_map="false"
+  odometry_map=""
+  image_scale="">
+  <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
+  <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+</xacro:odometry_plugin_macro> -->
+
+
+  <!-- <xacro:if value="false"> -->
   <xacro:if value="$(arg enable_ground_truth)">
     <xacro:ground_truth_imu_and_odometry namespace="${namespace}" parent_link="${namespace}/base_link" />
   </xacro:if>
+
 
   <xacro:if value="$(arg enable_logging)">
     <!-- Instantiate a logger -->
@@ -27,4 +93,51 @@
   <!-- Add odometry. -->
   <xacro:include filename="$(find mav_description)/urdf/odometry_sensor_rovio.xacro"/>
 
+  <!-- included directly odometry_sensor_rovio, changed measurement_divisor from 16 to 1 -->
+<!--   <robot name="$(arg mav_name)" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:odometry_plugin_macro
+      namespace="${namespace}"
+      odometry_sensor_suffix="1"
+      parent_link="${namespace}/base_link"
+      pose_topic="odometry_sensor1/pose"
+      pose_with_covariance_topic="odometry_sensor1/pose_with_covariance"
+      position_topic="odometry_sensor1/position"
+      transform_topic="odometry_sensor1/transform"
+      odometry_topic="odometry_sensor1/odometry"
+      parent_frame_id="world"
+      child_frame_id="${namespace}/odometry_sensor1"
+      mass_odometry_sensor="0.00001"
+      measurement_divisor="1"
+      measurement_delay="0.002"
+      unknown_delay="0.0"
+      noise_normal_position="0.0075 0.01 0.003"
+      noise_normal_quaternion="0.0075 0.01 0.003"
+      noise_normal_linear_velocity="0.03 0.03 0.03"
+      noise_normal_angular_velocity="0.0075 0.01 0.003"
+      noise_uniform_position="0.001 0.001 0.001"
+      noise_uniform_quaternion="0.001 0.001 0.001"
+      noise_uniform_linear_velocity="0.001 0.001 0.001"
+      noise_uniform_angular_velocity="0.001 0.001 0.001"
+      enable_odometry_map="false"
+      odometry_map=""
+      image_scale="">
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" /> 
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+    </xacro:odometry_plugin_macro>
+  </robot> -->
+              <!-- [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] [kg m^2] -->
+
+
+    <!-- Add realsense -->
+  <xacro:if value="$(arg add_rgbd_sensor)">
+    <!-- Import macro for realsense-RS200 camera-->
+    <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-D435.macro.xacro"/>
+    <!-- Create camera instance -->
+    <xacro:realsense-D435 prefix="" parent="${namespace}/base_link">
+        <origin xyz="0.18 0.0 -0.2565" rpy="0.0 ${-10.0/180.0*pi} 0.0" />   
+    </xacro:realsense-D435>
+  </xacro:if>
+    
 </robot>
+
+
