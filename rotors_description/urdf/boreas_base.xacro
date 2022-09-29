@@ -133,12 +133,12 @@
     <!-- Import macro for realsense-RS200 camera-->
     <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-D435.macro.xacro"/>
     <!-- Create camera instance 1-->
-    <xacro:realsense-D435 prefix="/boreas/camera/left/" parent="${namespace}/base_link">
-        <origin xyz="0.18 0.0 -0.2565" rpy="0.0 ${-10.0/180.0*pi} 0.0" />   
+    <xacro:realsense-D435 prefix="boreas/camera/left/" parent="${namespace}/base_link">
+        <origin xyz="0.18 0.0 -0.2565" rpy="0.0 ${-15.0/180.0*pi} 0.0" />   
     </xacro:realsense-D435>
-    <!-- Create camera instance 1-->
-    <xacro:realsense-D435 prefix="/boreas/camera/right/" parent="${namespace}/base_link">
-        <origin xyz="0.18 0.0 -0.2" rpy="0.0 ${0.0/180.0*pi} 0.0" />   
+    <!-- Create camera instance 2-->
+    <xacro:realsense-D435 prefix="boreas/camera/right/" parent="${namespace}/base_link">
+        <origin xyz="0.18 0.0 -0.05" rpy="0 ${10.0/180.0*pi} ${0/180.0*pi}" />   
     </xacro:realsense-D435>
   </xacro:if>
     
