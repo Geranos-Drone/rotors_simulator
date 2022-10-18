@@ -24,7 +24,7 @@
 
   <xacro:property name="com_x" value="0.0" />
   <xacro:property name="com_y" value="0.0" />
-  <xacro:property name="com_z" value="-0.0718471" /> <!-- center of mass offset -->
+  <xacro:property name="com_z" value="-0.07" /> <!-- center of mass offset -->
   <!-- <xacro:property name="com_z" value="-0.0718471" /> -->
 
   <xacro:property name="mass_rotor_thrust" value="0.05" /> <!-- [kg] --> 
