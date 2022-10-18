@@ -9,7 +9,7 @@
 
   <xacro:property name="use_mesh_file" value="true" />
   <xacro:property name="mesh_file" value="package://rotors_description/meshes/boreas_origin.dae" /> 
-  <xacro:property name="mass" value="7.5276" /> <!-- [kg] --> 
+  <xacro:property name="mass" value="7" /> <!-- 7.5276[kg] --> 
   <xacro:property name="body_width" value="0.8378145" /> <!-- [m] -->
   <xacro:property name="body_height" value="0.510" /> <!-- [m] --> 
 
@@ -24,7 +24,8 @@
 
   <xacro:property name="com_x" value="0.0" />
   <xacro:property name="com_y" value="0.0" />
-  <xacro:property name="com_z" value="-0.0718471" />
+  <xacro:property name="com_z" value="-0.0718471" /> <!-- center of mass offset -->
+  <!-- <xacro:property name="com_z" value="-0.0718471" /> -->
 
   <xacro:property name="mass_rotor_thrust" value="0.05" /> <!-- [kg] --> 
   <xacro:property name="mass_rotor_direction" value="0.01" /> <!-- [kg] --> 
@@ -48,7 +49,9 @@
 
   <!-- Property Blocks --> 
   <xacro:property name="body_inertia"> <!-- TODO -->
-    <inertia ixx="0.4172" ixy="0.0165" ixz="-0.0085" iyy="0.4113" iyz="0.0022" izz="0.6498" /> <!-- [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
+    <inertia ixx="0.5" ixy="0.0" ixz="0.0" iyy="0.5" iyz="0.0" izz="0.7" /> 
+<!--     <inertia ixx="0.4172" ixy="0.0165" ixz="-0.0085" iyy="0.4113" iyz="0.0022" izz="0.6498" /> -->
+     <!--  [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] [kg.m^2] -->
   </xacro:property>
 
     <!-- inertia of a single rotor, assuming it is a cuboid. Height=3mm, width=15mm -->
