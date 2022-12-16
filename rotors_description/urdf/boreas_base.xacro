@@ -5,6 +5,16 @@
   <!-- Instantiate boreas "mechanics" -->
   <xacro:include filename="$(find rotors_description)/urdf/boreas.xacro" />
   
+      <!-- Add realsense -->
+  <xacro:if value="$(arg add_rgbd_sensor)">
+    <!-- Import macro for realsense-RS200 camera-->
+    <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-D435.macro.xacro"/>
+    <!-- Create camera instance -->
+    <xacro:realsense-D435 prefix="" parent="${namespace}/base_link">
+        <origin xyz="0.18 0.0 -0.15" rpy="0.0 ${10.0/180.0*pi} 0.0" />   
+    </xacro:realsense-D435>
+  </xacro:if>
+
   <!-- Instantiate a controller. -->
   <xacro:controller_plugin_macro namespace="${namespace}" imu_sub_topic="imu" />
 
