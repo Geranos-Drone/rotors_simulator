@@ -138,7 +138,7 @@
     </xacro:realsense-D435>
     <!-- Create camera instance 2-->
     <xacro:realsense-D435 prefix="boreas/camera/top/" parent="${namespace}/base_link">
-        <origin xyz="0.18 0.0 -0.15" rpy="0 ${10.0/180.0*pi} ${0/180.0*pi}" />   
+        <origin xyz="0.18 0.0 -0.15" rpy="0 ${15.0/180.0*pi} ${0/180.0*pi}" />   
     </xacro:realsense-D435>
   </xacro:if>
     
